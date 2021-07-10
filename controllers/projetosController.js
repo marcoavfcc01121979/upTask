@@ -1,3 +1,5 @@
+const Proyectos = require('../models/Projetos');
+
 exports.projetosHome = (req, res) => {
     res.render('index', {
         nomePagina : 'Projetos'
@@ -10,11 +12,11 @@ exports.formularioProyecto = (req, res) => {
     })
 }
 
-exports.nuevoProyecto = (req, res) => {
-    const { nombre } = req.body;
+exports.nuevoProyecto = async (req, res) => {
+    const { nome } = req.body;
     let errors = [];
 
-    if(!nombre) {
+    if(!nome) {
         errors.push({ 'texto': 'Enviar um Nome Projeto' })
     }
 
@@ -27,5 +29,7 @@ exports.nuevoProyecto = (req, res) => {
     } else {
         // Não há erros
         // Insertar em la BD.
+        const proyecto = await Proyectos.create({ nome })
+            res.redirect('/');
     }
 }
