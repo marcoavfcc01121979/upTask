@@ -20,8 +20,11 @@ html(lang="en")
                 .panel.lista-proyectos
                     h2 Projetos
                     ul#proyectos.proyectos
-                        li
-                            a(href="#") Criação de um blog
-                        li
-                            a(href="#") Criação de um e-commerce
+                        if(projetos.length)
+                            each projeto in projetos
+                                li
+                                    a(href=`/projetos/${projeto.url}`)=projeto.nome     
+                            
             block contenido
+
+            // pre= vardump(projetos)
