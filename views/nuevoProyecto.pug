@@ -1,16 +1,16 @@
 extends layout
 
+include mixins/criarProjeto
+
 block contenido
     .contenido-principal
         h1 #{nomePagina}
+
+        pre= vardump(projeto)
         
         if(errors)
             each error in errors
                 .alerta= error.texto
+        +criarProjeto(projeto)
 
-        form.agregar-proyecto(action="/nuevo-proyecto" method="POST")
-            .campo
-                label(for="nome") Nome Projeto: 
-                input(type="text" id="nome" name="nome" placeholder="Nome Projeto")
-            .campo.enviar
-                input(type="submit" value="Enviar" class="boton")
+        

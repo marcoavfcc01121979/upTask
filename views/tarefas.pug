@@ -2,6 +2,15 @@ extends layout
 
 block contenido
     .contenido-principal
-        h1 #{nomePagina}
-        
+        h1 #{nomePagina} - #{projeto.nome}
+
+        // TODO - Formulario aqui
+
+        // TODO - Lista de pendencias
+        // pre= vardump(projeto)
+
+        // Acciones que se podem realizar
+        .contenedor-acciones
+            a(href=`/projetos/editar/${projeto.id}` class="boton") Editar projeto
+            button#eliminar-proyecto(type="button" class="boton eliminar") Eliminar projeto         
         
