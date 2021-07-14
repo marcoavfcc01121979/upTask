@@ -5,6 +5,12 @@ block contenido
         h1 #{nomePagina} - #{projeto.nome}
 
         // TODO - Formulario aqui
+        form.agregar-tarea(action=`/projetos/${projeto.url}` method="POST")
+            .campo
+                label(for="tarefa") Tarefa: 
+                input.nombre-tarea(type="text" name="tarefa" placeholder="Nome da tarefa")
+            .campo.enviar
+                input.boton.nueva-tarea(type="submit" value="Enviar")
 
         // TODO - Lista de pendencias
         // pre= vardump(projeto)
