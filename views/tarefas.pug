@@ -7,13 +7,28 @@ block contenido
         // TODO - Formulario aqui
         form.agregar-tarea(action=`/projetos/${projeto.url}` method="POST")
             .campo
-                label(for="tarefa") Tarefa: 
-                input.nombre-tarea(type="text" name="tarefa" placeholder="Nome da tarefa")
+                label(for="tarefas") Tarefa: 
+                input.nombre-tarea(type="text" name="tarefas" placeholder="Nome da tarefa")
             .campo.enviar
                 input.boton.nueva-tarea(type="submit" value="Enviar")
 
         // TODO - Lista de pendencias
-        // pre= vardump(projeto)
+        // pre= vardump(tareas)
+
+        .listado-pendientes
+            ul
+                if tareas.length
+                    each tarefas in tareas
+                        li.tarea
+                            p= tarefas.tarefas
+                            .acciones
+                                if tarefas.estado
+                                    i.far.fa-check-circle.completo
+                                else 
+                                    i.far.fa-check-circle
+                                i.fas.fa-trash
+                else 
+                    p Não há tarefas nesse projeto.
 
         // Acciones que se podem realizar
         .contenedor-acciones

@@ -6,7 +6,6 @@ exports.salvarTarefa = async (req, res, next) => {
         where: { url: req.params.url }
     });
 
-
     // le o valor do input
     const { tarefas } = req.body;
 
