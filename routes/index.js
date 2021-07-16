@@ -30,5 +30,8 @@ module.exports = function() {
 
     // Tarefas
     router.post('/projetos/:url', tarefasController.salvarTarefa);
+
+    // Atualizar tarefas
+    router.patch('/tarefas/:id', tarefasController.actualizarEstadoTarefas);
     return router;
 }

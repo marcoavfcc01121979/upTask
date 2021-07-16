@@ -19,7 +19,7 @@ block contenido
             ul
                 if tareas.length
                     each tarefas in tareas
-                        li.tarea
+                        li.tarefas(data-tarefas=tarefas.id)
                             p= tarefas.tarefas
                             .acciones
                                 if tarefas.estado

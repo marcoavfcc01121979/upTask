@@ -23,3 +23,22 @@ exports.salvarTarefa = async (req, res, next) => {
     // redirecionar
     res.redirect(`/projetos/${req.params.url }`)
 }
+
+
+exports.actualizarEstadoTarefas = async (req, res) => {
+    const { id } = req.params;
+    const tarefas = await Tarefas.findOne({ where: { id } });
+
+    // Atualizar estado
+    let estado = 0;
+    if(tarefas.estado === estado) {
+        estado = 1;
+    }
+    tarefas.estado = estado;
+
+    const resultado = await tarefas.save();
+    if(!resultado) return next();
+
+    //console.log(tarefas);
+    res.status(200).send('Atualizado...');
+}
