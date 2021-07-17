@@ -42,3 +42,12 @@ exports.actualizarEstadoTarefas = async (req, res) => {
     //console.log(tarefas);
     res.status(200).send('Atualizado...');
 }
+
+exports.eliminarTarefa = async (req, res, next) => {
+    const { id } = req.params;
+
+    // Elimina uma tarefa
+    const resultado = await Tarefas.destroy({ where: { id } });
+    if(!resultado) return next();
+    res.status(200).send('Tarefa eliminada corretamente.')
+}

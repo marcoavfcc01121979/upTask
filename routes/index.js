@@ -33,5 +33,8 @@ module.exports = function() {
 
     // Atualizar tarefas
     router.patch('/tarefas/:id', tarefasController.actualizarEstadoTarefas);
+
+    // Deletar tarefas
+    router.delete('/tarefas/:id', tarefasController.eliminarTarefa);
     return router;
 }
