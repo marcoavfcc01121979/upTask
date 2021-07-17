@@ -1,3 +1,8 @@
-import projetos from './modulos/projetos'
+import projetos from './modulos/projetos';
+import tarefas from './modulos/tarefas';
+import { atualizarProgresso } from './funcoes/avancado';
 
-import tarefas from './modulos/tarefas'
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarProgresso();
+})
+

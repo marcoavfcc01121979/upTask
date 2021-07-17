@@ -30,6 +30,12 @@ block contenido
                 else 
                     p Não há tarefas nesse projeto.
 
+        // Avance del Projeto
+        .avance
+            h2 Progresso do projeto
+            #barra-avance.barra-avance
+                #porcentaje.porcentaje
+
         // Acciones que se podem realizar
         .contenedor-acciones
             a(href=`/projetos/editar/${projeto.id}` class="boton") Editar projeto
