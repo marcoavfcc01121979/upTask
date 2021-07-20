@@ -1501,6 +1501,11 @@ configstore@^5.0.1:
     write-file-atomic "^3.0.0"
     xdg-basedir "^4.0.0"
 
+connect-flash@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/connect-flash/-/connect-flash-0.1.1.tgz#d8630f26d95a7f851f9956b1e8cc6732f3b6aa30"
+  integrity sha1-2GMPJtlaf4UfmVax6MxnMvO2qjA=
+
 constantinople@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/constantinople/-/constantinople-4.0.1.tgz"
@@ -1786,7 +1791,7 @@ execa@^5.0.0:
 
 express-validator@^6.12.0:
   version "6.12.0"
-  resolved "https://registry.npmjs.org/express-validator/-/express-validator-6.12.0.tgz"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.12.0.tgz#a9cd49b3fe4c470abb615ae2e7dd111053c25f66"
   integrity sha512-lcQAdVeAO+pBbHD33nIsDsd+QPakLX08tJ82iEsXj6ezyWCfYjE9RY/g9SVq5z4G0NaIkH8039Oe4r0G92DRyA==
   dependencies:
     lodash "^4.17.21"

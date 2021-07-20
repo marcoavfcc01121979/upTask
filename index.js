@@ -2,6 +2,8 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const bodyParser = require('body-parser')
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
 
 // helpers com alguns funções
 const helpers = require('./helpers');
@@ -21,6 +23,12 @@ db.sync()
 // criar um app de express
 const app = express();
 
+// Habilitar bodyParser para ler dados do formulario
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// Agregamos o express validator a toda a aplicação
+// app.use(expressValidator());
+
 // Onde carregar os arquivos estaticos
 app.use(express.static('public'));
 
@@ -30,15 +38,14 @@ app.set('view engine', 'pug');
 // Adicionar a página na view
 app.set('views', path.join(__dirname, './views'));
 
+// agregar flash messages
+app.use(flash());
+
 // Passar var dump para aplicação
 app.use((req, res, next) => {
     res.locals.vardump = helpers.vardump;
     next();
 })
-
-
-// Habilitar bodyParser para ler dados do formulario
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', routes())
 

@@ -6,16 +6,21 @@ exports.formCriarConta = (req, res) => {
     })
 }
 
-exports.criarConta = (req, res) => {
+exports.criarConta = async (req, res) => {
     // ler os dados
     const { email, password } = req.body;
 
-    // criar os Usuarios
-    Usuarios.create({
-        email,
-        password
-    })
-    .then(() => {
+    try {
+        // criar os Usuarios
+        await Usuarios.create({
+            email,
+            password
+        });
         res.redirect('/iniciar-session')
-    })
+    } catch (error) {
+        res.render('criarConta', {
+            error: error.errors,
+            nomePagina: 'Criar conta em Uptask'
+        })
+    }
 }
