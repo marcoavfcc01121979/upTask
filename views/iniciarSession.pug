@@ -6,6 +6,9 @@ html(lang="en")
         .contenedor-formulario
             h1 Iniciar Session em UpTask
 
+            if error
+                p.alerta.error= error
+
             form#formulario.caja.caja-login(method="POST" action="/iniciar-session")
                 .campo
                     label(for="email") E-mail:
