@@ -1,7 +1,11 @@
 const passport = require('passport');
 const Usuarios = require('../models/Usuarios');
 
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const crypto = require('crypto');
+const bcrypt = require('bcrypt-nodejs');
 
 exports.autenticarUsuario = passport.authenticate('local', {
     successRedirect: '/',
@@ -56,14 +60,49 @@ exports.enviarToken = async (req, res) => {
     console.log(resetUrl);
 }
 
-exports.resetPassword = async (req, res) => {
-    // const token = res.json(req.params);
+exports.validarToken = async (req, res) => {
     const usuario = await Usuarios.findOne({
         where: {
             token: req.params.token
         }
+    });
+
+    if(!usuario) {
+        req.flash('error', 'Não Válido');
+        res.redirect('/restabelecer');
+    }
+
+    // Formulario para generar el password
+    res.render('resetPassword', {
+        nomePagina: 'Recuperar Senha'
     })
-    // res.json(req.params.token);
-    //console.log("tem alguma coisa ", token);
-    console.log(" mais ", usuario);
+}
+
+// envia um password novo
+exports.atualizarPassword = async (req, res) => {
+    // Verifica se o token é valido mais tambem a data de expiração
+    const usuario = await Usuarios.findOne({
+        where: {
+            token: req.params.token,
+            expiracao: {
+                [Op.gte]: Date.now()
+            }
+        }
+    });
+    // Verificamos se o usuario e valido
+    if(!usuario) {
+        req.flash('error', 'Não válido');
+        res.redirect('/restabelecer')
+    } 
+
+    // hashear um novo password
+    usuario.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    usuario.token = null;   
+    usuario.expiracao = null;
+
+    // guardamos o novo password
+    await usuario.save();
+
+    req.flash("correto", 'Teu password foi modificado corretamente');
+    res.redirect('/iniciar-session');
 }

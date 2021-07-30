@@ -74,7 +74,9 @@ module.exports = function() {
     // restabelecer senha
     router.get('/restabelecer', usuariosController.formRestabelecerPassword);
     router.post('/restabelecer', authController.enviarToken);
-    router.get('/restabelecer/:token', authController.resetPassword);
+    
+    router.get('/restabelecer/:token', authController.validarToken);
+    router.post('/restabelecer/:token', authController.atualizarPassword);
 
     return router;
 }
