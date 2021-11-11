@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "desarrollo": "concurrently \"npm run dev \" \"npm run watch \"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./index.js",
-    "start": "concurrently \"npm run dev \" \"npm run watch \"",
+    "start": "node ./index.js",
     "watch": "webpack -w --mode development"
   },
   "author": "",
@@ -17,6 +18,7 @@
     "concurrently": "^4.1.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^10.0.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",

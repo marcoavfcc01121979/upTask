@@ -8,6 +8,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('./config/passport');
 
+require('dotenv').config({ path: 'variables.env' })
+
 // helpers com alguns funções
 const helpers = require('./helpers');
 
@@ -67,7 +69,12 @@ app.use((req, res, next) => {
 
 app.use('/', routes())
 
-app.listen(3000);
+// Servidor y Puerto
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3000;
 
+app.listen(port, host, () => {
+    console.log('O Servidor esta funcionando');
+})
 // chama a configuração de email
-require('./handlers/email');
+// require('./handlers/email');

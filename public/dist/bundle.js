@@ -380,7 +380,7 @@ eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/*!\n * Determine if an object is a Buffer\n *\n * @author   Feross Aboukhadijeh <https://feross.org>\n * @license  MIT\n */\nmodule.exports = function isBuffer(obj) {\n  return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj);\n};\n\n//# sourceURL=webpack:///./node_modules/axios/node_modules/is-buffer/index.js?");
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: ENOENT: no such file or directory, open '/home/marco/desenvolvimento/node/task/node_modules/axios/node_modules/is-buffer/index.js'\");\n\n//# sourceURL=webpack:///./node_modules/axios/node_modules/is-buffer/index.js?");
 
 /***/ }),
 
